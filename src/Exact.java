@@ -38,12 +38,10 @@ public class Exact {
 	}
 
 
-    // Utility function to find minimum of two double values
     double min(double x, double y) {
         return (x <= y) ? x : y;
     }
 
-    // A utility function to find distance between two points in a plane
 
     double cost(Point points[], int i, int j, int k) {
         Point p1 = points[i], p2 = points[j], p3 = points[k];
@@ -52,19 +50,14 @@ public class Exact {
 
     
     double mTCDP(Point points[], int n) {
-        // There must be at least 3 points to form a triangle
+
         if (n < 3)
             return 0;
 
-        // table to store results of subproblems. table[i][j] stores cost of
-        // triangulation of points from i to j. The entry table[0][n-1] stores
-        // the final result. 
         double[][] table = new double[n][n];
         int[][] s = new int[n][n];
 
-        // Fill table using above recursive formula. Note that the table
-        // is filled in diagonal fashion i.e., from diagonal elements to
-        // table[0][n-1] which is the result.
+    
         for (int gap = 0; gap < n; gap++) {
             for (int i = 0, j = gap; j < n; i++, j++) {
                 if (j < i + 2)
